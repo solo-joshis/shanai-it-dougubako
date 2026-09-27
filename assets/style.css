@@ -165,6 +165,8 @@ button { font: inherit; }
 .badge--active { background: var(--color-primary-light); color: var(--color-primary-dark); }
 
 .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+/* ボタンの横に置く、控えめなリンク（例：Excel形式でダウンロード） */
+.cta-sub-link { font-size: 14px; font-weight: 500; }
 @media (max-width: 767px) {
   .cta-row { display: grid; justify-items: center; gap: 10px; }
   .cta-row .btn { width: 100%; }
