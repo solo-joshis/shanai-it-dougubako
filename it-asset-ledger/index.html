@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IT資産管理台帳｜社内IT道具箱</title>
+  <meta name="description" content="どのPCを誰が使っていて、いつ保証が切れ、ライセンスが足りているか。1つのGoogleスプレッドシートで分かるようにするIT資産管理台帳です。">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://solo-joshis.github.io/shanai-it-dougubako/it-asset-ledger/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script src="../assets/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-logo" href="../">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="10" width="26" height="18" rx="2.5"/><path d="M11 10V6.5A1.5 1.5 0 0 1 12.5 5h7A1.5 1.5 0 0 1 21 6.5V10M3 17h26M14 15h4v4h-4z"/></svg>
+        社内IT道具箱
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開く">
+        <svg class="icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="ページ内">
+        <ul>
+          <li><a href="#get">無料版を使う</a></li>
+          <li><a href="#faq">よくある質問</a></li>
+          <li><a href="../articles/">記事</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ファーストビュー（スマホ：タイトル→説明→画像→ボタン） -->
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container page-hero__inner">
+        <h1 class="page-hero__title" id="page-title">IT資産管理台帳</h1>
+        <p class="page-hero__desc">どのPCを誰が使っていて、<br>いつ保証が切れ、ライセンスが足りているか。<br>1つのGoogleスプレッドシートで<br class="pc-only">分かるようにする台帳です。</p>
+        <figure class="page-hero__media">
+          <img src="../assets/img/ledger-desk.jpg" width="1200" height="900" alt="机の上のノートPCとスマートフォン。それぞれに「PC-0001」「SP-0001」の管理ラベルが貼ってある" fetchpriority="high">
+        </figure>
+        <div class="page-hero__cta cta-row">
+          <button class="btn" type="button" disabled>台帳のコピーを作る</button>
+          <span class="badge badge--soon">公開準備中</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 台帳の見本 -->
+    <section class="section" aria-labelledby="sample-title">
+      <div class="container">
+        <h2 class="section-title" id="sample-title"><span class="nowrap">台帳の見本</span><span class="nowrap">（サンプルデータ）</span></h2>
+        <div class="ledger-preview">
+          <p class="ledger-preview__bar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="1.5"/><path d="M3.5 9h17M3.5 14.5h17M9.5 4v16M15 4v16"/></svg>
+            ハードウェア台帳
+          </p>
+          <table class="ledger">
+            <caption class="visually-hidden">ハードウェア台帳の見本（サンプルデータ）</caption>
+            <thead>
+              <tr>
+                <th scope="col">管理番号</th>
+                <th scope="col" class="col-sub">種別</th>
+                <th scope="col">保証期限</th>
+                <th scope="col" class="is-auto">保証の状態</th>
+                <th scope="col" class="col-sub">使用者</th>
+                <th scope="col" class="col-sub">ステータス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>PC-0001</td><td class="col-sub">ノートPC</td><td class="num">2026/09/30</td><td class="is-expired">期限切れ</td><td class="col-sub">利用者01</td><td class="col-sub"><span class="badge badge--active">使用中</span></td></tr>
+              <tr><td>PC-0002</td><td class="col-sub">ノートPC</td><td class="num">2026/10/01</td><td class="is-soon">期限間近</td><td class="col-sub">利用者02</td><td class="col-sub"><span class="badge badge--active">使用中</span></td></tr>
+              <tr><td>PC-0004</td><td class="col-sub">ノートPC</td><td class="num">2026/12/31</td><td><span class="visually-hidden">表示なし</span></td><td class="col-sub">利用者04</td><td class="col-sub"><span class="badge badge--active">使用中</span></td></tr>
+              <tr><td>SP-0001</td><td class="col-sub">スマホ</td><td class="num">2027/01/15</td><td><span class="visually-hidden">表示なし</span></td><td class="col-sub">利用者01</td><td class="col-sub"><span class="badge badge--active">使用中</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="ledger-caption">台帳の見本（サンプルデータ）。見出しが緑の列は自動計算です。基準日を2026/10/01として計算しています。</p>
+      </div>
+    </section>
+
+    <!-- 無料版でできること -->
+    <section class="section section--subtle" aria-labelledby="can-title">
+      <div class="container">
+        <h2 class="section-title" id="can-title">無料版でできること</h2>
+        <ul class="feature-grid">
+          <li class="feature-card">
+            <span class="icon-tile icon-tile--sm" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><rect x="4.5" y="5" width="15" height="10.5" rx="1"/><path d="M2.5 19h19"/></svg>
+            </span>
+            <h3 class="feature-card__title">ハードウェア台帳</h3>
+            <p class="feature-card__desc">PC・スマホ・周辺機器を登録。保証期限切れは赤、90日以内は黄色。</p>
+          </li>
+          <li class="feature-card">
+            <span class="icon-tile icon-tile--sm" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M6 2.5h8.5L19 7v14.5H6z"/><path d="M14.5 2.5V7H19M9 11h7M9 14.5h7M9 18h4.5"/></svg>
+            </span>
+            <h3 class="feature-card__title">ライセンス台帳</h3>
+            <p class="feature-card__desc">保有数を登録すると、割当数と残数を自動計算。不足は赤。</p>
+          </li>
+          <li class="feature-card">
+            <span class="icon-tile icon-tile--sm" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><circle cx="9.5" cy="8" r="3.5"/><path d="M3 20c0-3.7 2.9-6 6.5-6s6.5 2.3 6.5 6"/><path d="M15.5 4.8a3.3 3.3 0 0 1 0 6.4M17.5 14.5c2.2.8 3.5 2.8 3.5 5.5"/></svg>
+            </span>
+            <h3 class="feature-card__title">ライセンス割当</h3>
+            <p class="feature-card__desc">誰がどのライセンスを使っているかを記録。重複も知らせる。</p>
+          </li>
+          <li class="feature-card">
+            <span class="icon-tile icon-tile--sm" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3.5 20.5h17"/><rect x="5" y="12" width="3.5" height="6" rx=".5"/><rect x="10.3" y="8" width="3.5" height="10" rx=".5"/><rect x="15.6" y="4" width="3.5" height="14" rx=".5"/></svg>
+            </span>
+            <h3 class="feature-card__title">ダッシュボード</h3>
+            <p class="feature-card__desc">種別×状態ごとの台数、期限切れの台数、年間ソフトウェア費用。</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 無料版を使う -->
+    <section class="section" id="get" aria-labelledby="get-title">
+      <div class="container">
+        <h2 class="section-title" id="get-title">無料版を使う<span class="nowrap">（手順）</span></h2>
+        <ol class="steps">
+          <li><span>ボタンから台帳のコピーを<br class="pc-only">自分のGoogleドライブに作る</span></li>
+          <li><span>「使い方」シートに沿って入力する</span></li>
+          <li><span>ダッシュボードで確認する</span></li>
+        </ol>
+        <div class="steps-cta cta-row">
+          <button class="btn" type="button" disabled>台帳のコピーを作る</button>
+          <span class="badge badge--soon">公開準備中</span>
+        </div>
+        <div class="info-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10.5" rx="1.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.5v3"/></svg>
+          <h3 class="info-box__title">データの扱い</h3>
+          <p class="info-box__body">台帳のデータは、あなたのGoogleアカウントの中にだけ保存されます。<br class="pc-only">作成者がデータを見ることはありません。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 有料版 -->
+    <section class="section section--subtle" aria-labelledby="paid-title">
+      <div class="container paid">
+        <div>
+          <h2 class="section-title" id="paid-title">有料版<span class="nowrap">（準備中）</span></h2>
+          <p class="paid__lead">さらに便利に使える機能を追加する予定です。</p>
+          <h3 class="paid__subtitle">先行試用の募集（準備中）</h3>
+          <ul class="paid__terms">
+            <li>期間は2週間。付属のサンプルデータで試せます</li>
+            <li>会社の実データは送らないでください。画面の画像は、個人名・社名などを伏せてお送りください</li>
+            <li>お礼は有料版の無償提供です（金銭のお礼はありません）</li>
+            <li>ご参加の前に、自社のルールで参加してよいかをご確認ください</li>
+          </ul>
+          <!-- フォームを公開したら、下のボタンを次に差し替える（site/README.md「フォームURLを設定する場所」）：
+               <a class="btn btn--primary" href="https://docs.google.com/forms/d/e/1FAIpQLSc5CHYG-KQohJOjzTcyDZqPtfWEJAed-z-Wu9gSAYP4RLwqeQ/viewform?usp=pp_url&amp;entry.1675758152=%E7%A4%BE%E5%86%85IT%E9%81%93%E5%85%B7%E7%AE%B1%E3%81%AE%E3%82%B5%E3%82%A4%E3%83%88" target="_blank" rel="noopener">先行試用に応募する</a> -->
+          <div class="cta-row paid__cta">
+            <button class="btn" type="button" disabled>先行試用に応募する</button>
+            <span class="badge badge--soon">受付準備中</span>
+          </div>
+          <p class="paid__note">応募の際にお預かりする情報の扱いは、<a href="../privacy/">プライバシーポリシー</a>をご覧ください。</p>
+        </div>
+        <ul class="check-list">
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M7.8 12.3l2.8 2.8 5.6-6"/></svg><span>期限のメール通知</span></li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M7.8 12.3l2.8 2.8 5.6-6"/></svg><span>棚卸し・廃棄とデータ消去の記録</span></li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M7.8 12.3l2.8 2.8 5.6-6"/></svg><span>PC情報の収集スクリプトとCSV取り込み</span></li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M7.8 12.3l2.8 2.8 5.6-6"/></svg><span>自己診断と担当者交代の手順書</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- よくある質問 -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 class="section-title" id="faq-title">よくある質問</h2>
+        <div class="accordion">
+          <div class="accordion__item">
+            <h3 class="accordion__heading">
+              <button class="accordion__button" type="button" id="faq-q1" aria-expanded="true" aria-controls="faq-a1" data-initially-open>
+                Excelでも使えますか？<span class="accordion__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="accordion__panel" id="faq-a1" role="region" aria-labelledby="faq-q1">
+              <p>はい、Excelでも使えます。<br>Googleスプレッドシートの機能を使っていますが、基本的な関数で作成しているため、Excelでも同じようにご利用いただけます。</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <h3 class="accordion__heading">
+              <button class="accordion__button" type="button" id="faq-q2" aria-expanded="true" aria-controls="faq-a2">
+                何台まで管理できますか？<span class="accordion__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="accordion__panel" id="faq-a2" role="region" aria-labelledby="faq-q2">
+              <p>各シート1,000行目まで入力できます（見出しの行を除くと999行）。</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <h3 class="accordion__heading">
+              <button class="accordion__button" type="button" id="faq-q3" aria-expanded="true" aria-controls="faq-a3">
+                列を追加しても大丈夫ですか？<span class="accordion__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="accordion__panel" id="faq-a3" role="region" aria-labelledby="faq-q3">
+              <p>いちばん右に追加してください。見出し（1行目）の名前を変えたり、自動計算の列（見出しが緑）に入力したりすると、集計が動かなくなります。</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <h3 class="accordion__heading">
+              <button class="accordion__button" type="button" id="faq-q4" aria-expanded="true" aria-controls="faq-a4">
+                AIに頼んで自分で作るのと何が違いますか？<span class="accordion__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="accordion__panel" id="faq-a4" role="region" aria-labelledby="faq-q4">
+              <p>表を作るだけなら、AIでも作れます。この台帳は、サンプルデータと期待値で計算が正しいことを確かめてから配布し、つまずきやすい点と直し方を「使い方」シートに書いています。作ったあとの確認や説明の手間を減らしたい人向けです。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <a class="footer-logo" href="../">社内IT道具箱</a>
+        <p class="footer-tagline">中小企業の、はじめてのIT管理をやさしく、シンプルに。</p>
+      </div>
+      <div class="footer-legal">
+        <p>掲載しているテンプレートは一般的な参考例であり、法的助言ではありません。<br>導入にあたっては自社の状況に合わせて内容を確認し、必要に応じて専門家にご相談ください。<br>保証期限・ライセンスの計算は、入力されたデータにもとづく参考情報です。</p>
+        <p class="footer-links"><a href="../privacy/">プライバシーポリシー</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

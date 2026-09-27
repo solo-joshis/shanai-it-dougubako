@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>社内IT道具箱</title>
+  <meta name="description" content="総務や経理と兼任で、会社のIT管理を任された人へ。台帳・規程・チェックリストを、そのまま使える形で準備しています。">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://solo-joshis.github.io/shanai-it-dougubako/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-logo" href="./">社内IT道具箱</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開く">
+        <svg class="icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="ページ内">
+        <ul>
+          <li><a href="#tools">道具の一覧</a></li>
+          <li><a href="#why">AIで作る場合との違い</a></li>
+          <li><a href="articles/">記事</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ファーストビュー：4枚のスライド（1枚目＝サイトの入口、2〜4枚目＝道具の紹介）。4枚目の次は1枚目に戻る -->
+    <h1 class="visually-hidden">社内IT道具箱</h1>
+    <section class="hero hero-carousel" aria-roledescription="carousel" aria-label="社内IT道具箱の紹介">
+      <div class="hero-carousel__viewport">
+        <div class="hero-carousel__track">
+          <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="1 / 4">
+            <div class="container hero-slide__inner">
+              <div class="hero-slide__body">
+                <p class="hero__title">社内IT道具箱</p>
+                <p class="hero__target">総務や経理と兼任で、<br>会社のIT管理を任された人へ。</p>
+                <p class="hero__text">台帳・規程・チェックリストを、<br>そのまま使える形で準備しています。</p>
+                <div class="hero__actions">
+                  <a class="btn btn--primary" href="#tools">無料版を見る
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </a>
+                </div>
+              </div>
+              <figure class="hero-slide__media">
+                <img src="assets/img/hero.jpg" width="1400" height="933" alt="机の上の緑の道具箱と、「台帳」「規程」「チェックリスト」のラベルを貼ったファイル" fetchpriority="high">
+              </figure>
+            </div>
+          </div>
+
+          <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 / 4">
+            <div class="container hero-slide__inner">
+              <div class="hero-slide__body">
+                <p class="hero-slide__eyebrow"><span class="badge badge--active">台帳</span></p>
+                <h2 class="hero__tool-title">IT資産管理台帳</h2>
+                <p class="hero__text">PC・スマホ・ソフトウェアを1つのスプレッドシートで管理。<br class="pc-only">保証期限切れとライセンス不足が一目で分かる。</p>
+                <p class="hero__status"><span class="badge badge--free">無料版あり</span><span class="hero__note">公開準備中</span></p>
+                <div class="hero__actions">
+                  <a class="btn btn--primary" href="it-asset-ledger/">詳しく見る
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </a>
+                </div>
+              </div>
+              <figure class="hero-slide__media">
+                <img src="assets/img/slide-ledger.jpg" width="1400" height="933" alt="机の上のノートPCとスマートフォン、深緑のファイルボックス" loading="lazy">
+              </figure>
+            </div>
+          </div>
+
+          <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 / 4">
+            <div class="container hero-slide__inner">
+              <div class="hero-slide__body">
+                <p class="hero-slide__eyebrow"><span class="badge badge--active">規程</span></p>
+                <h2 class="hero__tool-title">情報セキュリティ規程のひな形</h2>
+                <p class="hero__text">自社の状況に合わせて調整できる、<br class="pc-only">情報セキュリティ規程のひな形です。</p>
+                <p class="hero__status"><span class="badge badge--soon">準備中</span></p>
+              </div>
+              <figure class="hero-slide__media">
+                <img src="assets/img/slide-policy.jpg" width="1400" height="933" alt="机の上に開いた深緑のバインダーと書類" loading="lazy">
+              </figure>
+            </div>
+          </div>
+
+          <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="4 / 4">
+            <div class="container hero-slide__inner">
+              <div class="hero-slide__body">
+                <p class="hero-slide__eyebrow"><span class="badge badge--active">手続き</span></p>
+                <h2 class="hero__tool-title">入退社のIT手続き<wbr>チェックリスト</h2>
+                <p class="hero__text">入社・異動・退社の際に必要なIT手続きを、<br class="pc-only">漏れなく進めるためのチェックリストです。</p>
+                <p class="hero__status"><span class="badge badge--soon">準備中</span></p>
+              </div>
+              <figure class="hero-slide__media">
+                <img src="assets/img/slide-checklist.jpg" width="1400" height="933" alt="机の上のクリップボードに挟んだチェックリストと社員証、鍵" loading="lazy">
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container hero-carousel__controls">
+        <ul class="hero-carousel__dots">
+          <li><button class="hero-carousel__dot" type="button" aria-label="1枚目：社内IT道具箱"></button></li>
+          <li><button class="hero-carousel__dot" type="button" aria-label="2枚目：IT資産管理台帳"></button></li>
+          <li><button class="hero-carousel__dot" type="button" aria-label="3枚目：情報セキュリティ規程のひな形"></button></li>
+          <li><button class="hero-carousel__dot" type="button" aria-label="4枚目：入退社のIT手続きチェックリスト"></button></li>
+        </ul>
+        <div class="hero-carousel__buttons">
+          <button class="hero-carousel__btn" type="button" data-action="prev" aria-label="前のスライド">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <button class="hero-carousel__btn" type="button" data-action="next" aria-label="次のスライド">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 道具の一覧 -->
+    <section class="section" id="tools" aria-labelledby="tools-title">
+      <div class="container">
+        <h2 class="section-title" id="tools-title">道具の一覧</h2>
+        <p class="section-lead">台帳・規程・チェックリストを、そのまま使える形で準備しています。</p>
+        <ul class="tool-grid">
+          <li>
+            <article class="tool-card tool-card--active">
+              <span class="icon-tile" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.5"/><path d="M3.5 9h17M3.5 14.5h17M9.5 4v16M15 4v16"/></svg>
+              </span>
+              <h3 class="tool-card__title">IT資産管理台帳</h3>
+              <p class="tool-card__desc">PC・スマホ・ソフトウェアを1つのスプレッドシートで管理。保証期限切れとライセンス不足が一目で分かる。</p>
+              <p class="tool-card__status"><span class="badge badge--free">無料版あり</span><span class="tool-card__note">公開準備中</span></p>
+              <div class="tool-card__action">
+                <a class="btn btn--primary btn--block" href="it-asset-ledger/">紹介を見る
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="tool-card">
+              <span class="icon-tile icon-tile--muted" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M6 2.5h8.5L19 7v14.5H6z"/><path d="M14.5 2.5V7H19M9 11h7M9 14.5h7M9 18h4.5"/></svg>
+              </span>
+              <h3 class="tool-card__title">情報セキュリティ規程のひな形</h3>
+              <p class="tool-card__desc">自社の状況に合わせて調整できる、情報セキュリティ規程のひな形です。</p>
+              <p class="tool-card__status"><span class="badge badge--soon">準備中</span></p>
+              <div class="tool-card__action">
+                <button class="btn btn--soft btn--block" type="button" disabled>準備中</button>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="tool-card">
+              <span class="icon-tile icon-tile--muted" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="5" y="4" width="14" height="17.5" rx="1.5"/><path d="M9 4V2.5h6V4M8.5 6h7"/><path d="M8 11l1.2 1.2L11.3 10M8 16l1.2 1.2 2.1-2.2M13.5 11.3H16M13.5 16.3H16"/></svg>
+              </span>
+              <h3 class="tool-card__title">入退社のIT手続き<wbr>チェックリスト</h3>
+              <p class="tool-card__desc">入社・異動・退社の際に必要なIT手続きを、漏れなく進めるためのチェックリストです。</p>
+              <p class="tool-card__status"><span class="badge badge--soon">準備中</span></p>
+              <div class="tool-card__action">
+                <button class="btn btn--soft btn--block" type="button" disabled>準備中</button>
+              </div>
+            </article>
+          </li>
+        </ul>
+        <div class="shelf-note">
+          <span class="icon-tile" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+          <div>
+            <p class="shelf-note__title">道具は、これから少しずつ増やしていきます。</p>
+            <p class="shelf-note__text">台帳・規程・チェックリストなど、兼任のIT担当者が使える道具を順に追加します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AIで作る場合との違い -->
+    <section class="section section--subtle" id="why" aria-labelledby="why-title">
+      <div class="container">
+        <h2 class="section-title" id="why-title">AIで作れる時代に、なぜ使うのか</h2>
+        <p class="section-lead">表だけなら、生成AIに頼めば数分で作れます。<br>ここで提供したいのは、作ったあとの手間を減らすことです。</p>
+
+        <table class="compare">
+          <caption class="visually-hidden">AIで自作する場合と、社内IT道具箱の台帳の比較</caption>
+          <thead>
+            <tr>
+              <th scope="col">項目</th>
+              <th scope="col">AIで自作する場合</th>
+              <th scope="col" class="is-ours">社内IT道具箱の台帳</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">正しく動くか</th><td>自分で確かめる</td><td>サンプルデータと期待値で検証してから配布</td></tr>
+            <tr><th scope="row">何を管理するか</th><td>自分で考えてAIに伝える</td><td>必要な項目を最初から用意</td></tr>
+            <tr><th scope="row">つまずいたときの案内</th><td>必要なら自分で用意する</td><td>よくある質問と直し方を掲載</td></tr>
+            <tr><th scope="row">引き継ぎの資料</th><td>必要なら自分で用意する</td><td>列の説明と入力ルールをシートに記載</td></tr>
+          </tbody>
+        </table>
+
+        <!-- スマホ：表の代わりに4つのカード -->
+        <ul class="compare-cards">
+          <li class="compare-card">
+            <h3 class="compare-card__title">正しく動くか</h3>
+            <dl>
+              <div class="compare-card__row"><dt>AIで自作する場合</dt><dd>自分で確かめる</dd></div>
+              <div class="compare-card__row is-ours"><dt>社内IT道具箱の台帳</dt><dd>サンプルデータと期待値で検証してから配布</dd></div>
+            </dl>
+          </li>
+          <li class="compare-card">
+            <h3 class="compare-card__title">何を管理するか</h3>
+            <dl>
+              <div class="compare-card__row"><dt>AIで自作する場合</dt><dd>自分で考えてAIに伝える</dd></div>
+              <div class="compare-card__row is-ours"><dt>社内IT道具箱の台帳</dt><dd>必要な項目を最初から用意</dd></div>
+            </dl>
+          </li>
+          <li class="compare-card">
+            <h3 class="compare-card__title">つまずいたときの案内</h3>
+            <dl>
+              <div class="compare-card__row"><dt>AIで自作する場合</dt><dd>必要なら自分で用意する</dd></div>
+              <div class="compare-card__row is-ours"><dt>社内IT道具箱の台帳</dt><dd>よくある質問と直し方を掲載</dd></div>
+            </dl>
+          </li>
+          <li class="compare-card">
+            <h3 class="compare-card__title">引き継ぎの資料</h3>
+            <dl>
+              <div class="compare-card__row"><dt>AIで自作する場合</dt><dd>必要なら自分で用意する</dd></div>
+              <div class="compare-card__row is-ours"><dt>社内IT道具箱の台帳</dt><dd>列の説明と入力ルールをシートに記載</dd></div>
+            </dl>
+          </li>
+        </ul>
+
+        <p class="compare-note">AIで自作・保守できる人は、自作するのがいちばんです。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <a class="footer-logo" href="./">社内IT道具箱</a>
+        <p class="footer-tagline">中小企業の、はじめてのIT管理をやさしく、シンプルに。</p>
+      </div>
+      <div class="footer-legal">
+        <p>掲載しているテンプレートは一般的な参考例であり、法的助言ではありません。<br>導入にあたっては自社の状況に合わせて内容を確認し、必要に応じて専門家にご相談ください。</p>
+        <p class="footer-links"><a href="privacy/">プライバシーポリシー</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

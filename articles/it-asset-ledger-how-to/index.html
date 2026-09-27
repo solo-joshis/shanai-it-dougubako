@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IT資産管理台帳の作り方：兼任担当者が最初にそろえる3つの表｜社内IT道具箱</title>
+  <meta name="description" content="PC・スマホとソフトウェアのライセンスを、スプレッドシートで管理する台帳の作り方です。「機器」「ライセンス」「割当」の3つに分ける理由、最低限の項目、保証期限とライセンス残数の数式、よくある失敗を説明します。">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://solo-joshis.github.io/shanai-it-dougubako/articles/it-asset-ledger-how-to/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <script src="../../assets/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-logo" href="../../">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="10" width="26" height="18" rx="2.5"/><path d="M11 10V6.5A1.5 1.5 0 0 1 12.5 5h7A1.5 1.5 0 0 1 21 6.5V10M3 17h26M14 15h4v4h-4z"/></svg>
+        社内IT道具箱
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開く">
+        <svg class="icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="サイト内">
+        <ul>
+          <li><a href="../../#tools">道具の一覧</a></li>
+          <li><a href="../../articles/">記事</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="article">
+      <div class="container article__inner">
+        <nav class="breadcrumb" aria-label="現在地">
+          <ol>
+            <li><a href="../../">トップ</a></li>
+            <li><a href="../">記事</a></li>
+            <li aria-current="page">IT資産管理台帳の作り方：兼任担当者が最初にそろえる3つの表</li>
+          </ol>
+        </nav>
+        <header class="article__header">
+          <h1 class="article__title">IT資産管理台帳の作り方：兼任担当者が最初にそろえる3つの表</h1>
+          <p class="article__date"><time datetime="2026-09-24">2026/09/24</time></p>
+        </header>
+        <div class="prose">
+<p>総務や経理と兼任で、会社のPCやソフトウェアの管理を任された人に向けた記事です。</p>
+<h2 id="h-1">結論：台帳は「機器」「ライセンス」「割当」の3つに分ける</h2>
+<p>IT資産管理台帳の目的は、次の3つの質問にすぐ答えられるようにすることです。</p>
+<ul><li>どのPCを、誰が使っているか</li><li>保証がいつ切れるか</li><li>ソフトウェアのライセンスが足りているか</li></ul>
+<p>このために、記録するデータを次の3つの表に分けます。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="表（横にスクロールできます）"><table><thead><tr><th scope="col">表</th><th scope="col">1行に書くもの</th><th scope="col">例</th></tr></thead><tbody><tr><td>ハードウェア台帳</td><td>機器1台</td><td>PC-0001（ノートPC）、SP-0001（スマホ）</td></tr><tr><td>ライセンス台帳</td><td>契約1件</td><td>SW-0001（オフィスソフト、10ライセンス）</td></tr><tr><td>ライセンス割当</td><td>「誰にどのライセンスを割り当てたか」1件</td><td>SW-0001 を利用者01に割り当て</td></tr></tbody></table></div>
+<p>この3つがあれば、台数の集計や期限の一覧は、あとから数式で作れます。</p>
+<h2 id="h-2">なぜ3つに分けるのか</h2>
+<p>1枚の表にまとめると、次のような問題が起きやすくなります。</p>
+<ul><li><strong>ライセンスの数が合わなくなる</strong>：1つの契約を何人もが使うため、PCの行に「使っているソフト」を書くと、同じ契約の情報が何行にも散らばります。契約の本数を変えたとき、直す場所が増えます。</li><li><strong>割当の履歴が残らない</strong>：異動や退職でライセンスを外すとき、行を消すと「いつまで誰が使っていたか」が分からなくなります。割当を別の表にして「解除日」を書けば、履歴を残したまま、今の割当数だけを数えられます。</li><li><strong>PCを使わないライセンスを書く場所がない</strong>：スマホ用のアプリや、人に割り当てるクラウドサービスの契約は、PCの行には書けません。</li></ul>
+<h2 id="h-3">最低限そろえる項目</h2>
+<p>最初から全部の列を埋める必要はありません。まずは「必須」の列だけ埋めて、残りは分かったときに書き足します。</p>
+<h3 id="h-4">ハードウェア台帳</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="表（横にスクロールできます）"><table><thead><tr><th scope="col">列</th><th scope="col">必須</th><th scope="col">書き方</th></tr></thead><tbody><tr><td>管理番号</td><td>○</td><td>PC-0001 のように、種別ごとの記号＋4桁の番号</td></tr><tr><td>種別</td><td>○</td><td>ノートPC／デスクトップPC／スマホ／タブレット／モニター／プリンター／ネットワーク機器／その他 から選ぶ</td></tr><tr><td>メーカー・型番</td><td></td><td>本体のラベルや納品書から</td></tr><tr><td>シリアル番号</td><td></td><td>修理の依頼や、あとで機器を突き合わせるときに使う</td></tr><tr><td>購入日・保証期限</td><td></td><td>日付として入力する（文字で「来年3月」などと書かない）</td></tr><tr><td>使用者・部署・設置場所</td><td></td><td>共用の機器は設置場所だけでもよい</td></tr><tr><td>ステータス</td><td>○</td><td>使用中／予備／修理中／貸出中／廃棄予定／廃棄済 から選ぶ</td></tr><tr><td>備考</td><td></td><td>パスワードや個人の連絡先は書かない</td></tr></tbody></table></div>
+<h3 id="h-5">ライセンス台帳</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="表（横にスクロールできます）"><table><thead><tr><th scope="col">列</th><th scope="col">必須</th><th scope="col">書き方</th></tr></thead><tbody><tr><td>ライセンスID</td><td>○</td><td>SW-0001 のような番号</td></tr><tr><td>製品名</td><td>○</td><td>契約書や管理画面に出ている名前</td></tr><tr><td>契約形態</td><td>○</td><td>サブスクリプション／買い切り／無料</td></tr><tr><td>保有数</td><td>○</td><td>契約しているライセンスの数（0以上の整数）</td></tr><tr><td>割当数</td><td>自動</td><td>ライセンス割当の表から数える</td></tr><tr><td>残数</td><td>自動</td><td>保有数 − 割当数</td></tr><tr><td>更新日・年額費用</td><td></td><td>サブスクリプションの更新を忘れないために</td></tr><tr><td>管理者アカウント</td><td></td><td>IDやメールアドレスだけ。パスワードは書かない</td></tr></tbody></table></div>
+<h3 id="h-6">ライセンス割当</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="表（横にスクロールできます）"><table><thead><tr><th scope="col">列</th><th scope="col">必須</th><th scope="col">書き方</th></tr></thead><tbody><tr><td>ライセンスID</td><td>○</td><td>ライセンス台帳にあるIDから選ぶ</td></tr><tr><td>使用者</td><td>○</td><td></td></tr><tr><td>割当日</td><td>○</td><td>使い始めた日</td></tr><tr><td>解除日</td><td></td><td>外した日。空欄なら「割当中」</td></tr></tbody></table></div>
+<h2 id="h-7">手順</h2>
+<h3 id="h-8">1. 管理番号のルールを決める</h3>
+<p>管理番号は、台帳と実物を結びつけるための番号です。次のように決めておくと迷いません。</p>
+<ul><li>種別ごとに記号を分ける（例：PC＝ノートPC・デスクトップPC、SP＝スマホ、TB＝タブレット）</li><li>番号は4桁にそろえる（PC-0001）。並べ替えたときに順番が崩れません</li><li>廃棄した機器の番号は、ほかの機器に使い回さない。過去の記録と混ざらないようにするためです</li><li>番号を書いたラベルを機器に貼る</li></ul>
+<h3 id="h-9">2. 機器を登録する</h3>
+<p>最初の登録が、いちばん手間のかかる作業です。一度に全部そろえようとせず、次の順で進めます。</p>
+<ol><li>手元にある購入の記録（納品書・請求書・購入履歴）から、機器の一覧を作る</li><li>管理番号・種別・ステータスの3つだけを埋めて、全台を1行ずつ登録する</li><li>機器を見て回るときに、ラベルを貼りながら使用者・設置場所・シリアル番号を書き足す</li><li>保証期限は、メーカーの保証確認ページや購入時の書類で確かめて入力する</li></ol>
+<h3 id="h-10">3. 保証期限を「状態」の列で知らせる</h3>
+<p>保証期限の列を毎回目で追うのは大変です。隣に「保証の状態」の列を作り、数式で文字を出します。色だけでなく文字でも出しておくと、印刷したときや、色の区別がつきにくい人にも伝わります。</p>
+<p>例として、ハードウェア台帳の列を次のように置いた場合の数式です（列の位置は自分の台帳に合わせて読み替えてください）。</p>
+<ul><li>C列：保証期限、D列：保証の状態、F列：ステータス</li></ul>
+<p>D2に入れる数式：</p>
+<pre><code>=IF(C2=&quot;&quot;,&quot;&quot;,IF(F2=&quot;廃棄済&quot;,&quot;&quot;,IF(NOT(ISNUMBER(C2)),&quot;日付エラー&quot;,IF(C2&lt;TODAY(),&quot;期限切れ&quot;,IF(C2-TODAY()&lt;=90,&quot;期限間近&quot;,&quot;&quot;)))))</code></pre>
+<p>この数式は、次のように判定します。</p>
+<ul><li>保証期限が空欄、またはステータスが「廃棄済」なら何も出さない（廃棄した機器まで警告しないため）</li><li>日付として読めない値なら「日付エラー」</li><li>今日より前なら「期限切れ」、今日から90日以内なら「期限間近」</li></ul>
+<p>あわせて条件付き書式で、「期限切れ」の行を赤、「期限間近」の行を黄色にしておくと、開いたときにすぐ目に入ります。</p>
+<h3 id="h-11">4. ライセンスの残数を自動で出す</h3>
+<p>ライセンス台帳の「割当数」は、ライセンス割当の表から数えます。このとき、次の2種類の行は数えないようにします。</p>
+<ul><li>割当日が未来の行（まだ使い始めていない）</li><li>解除日が今日以前の行（もう外した）</li></ul>
+<p>例として、ライセンス台帳のA列にライセンスID、ライセンス割当の表のA列にライセンスID・C列に割当日・D列に解除日を置いた場合、ライセンス台帳の割当数の列（2行目）に入れる数式です。</p>
+<pre><code>=COUNTIFS('ライセンス割当'!$A$2:$A$1000,A2,'ライセンス割当'!$C$2:$C$1000,&quot;&lt;&gt;&quot;,'ライセンス割当'!$C$2:$C$1000,&quot;&lt;=&quot;&amp;TODAY(),'ライセンス割当'!$D$2:$D$1000,&quot;&quot;)+COUNTIFS('ライセンス割当'!$A$2:$A$1000,A2,'ライセンス割当'!$C$2:$C$1000,&quot;&lt;&gt;&quot;,'ライセンス割当'!$C$2:$C$1000,&quot;&lt;=&quot;&amp;TODAY(),'ライセンス割当'!$D$2:$D$1000,&quot;&gt;&quot;&amp;TODAY())</code></pre>
+<p>どちらも「割当日が空欄でなく、今日以前」の行だけを対象にし、前半は「解除日が空欄の割当」、後半は「解除日が明日以降の割当」を数えています。残数は「保有数 − 割当数」で出し、マイナスになったら赤にします。</p>
+<p>注意：COUNTIFS は、検索する値に「*」や「?」が含まれるとワイルドカードとして扱います。ライセンスIDには英数字とハイフンだけを使ってください。</p>
+<h3 id="h-12">5. 割当の表を点検する</h3>
+<p>ライセンス割当の表は、入力ミスがあっても残数の数字だけでは気づきにくい表です。月に1回など時期を決めて、次の点を確かめます。</p>
+<ul><li>割当日が空欄の行がないか</li><li>日付の欄に文字（「来月」など）が入っていないか</li><li>解除日が割当日より前になっていないか</li><li>同じ人に、同じライセンスが2回割り当てられていないか</li><li>退職・異動した人の割当に、解除日が入っているか</li></ul>
+<h2 id="h-13">よくある失敗</h2>
+<ul><li><strong>1枚の表に全部書く</strong>：上で書いたとおり、ライセンスの数や割当の履歴が追えなくなります。</li><li><strong>備考にパスワードを書く</strong>：台帳は共有されることが多いファイルです。パスワードや個人の連絡先は書かず、パスワードの管理は別の方法にします。</li><li><strong>自動計算の列に手で数字を入れる</strong>：数式が消え、その行だけ集計から外れます。自動計算の列は見出しの色を変えるなどして、入力する列と区別します。</li><li><strong>見出しの名前を途中で変える</strong>：集計の数式や、ほかの人が作った仕組みが見出しの名前を頼りにしている場合、動かなくなります。</li><li><strong>最初に完璧を目指す</strong>：全部の列を埋めてから使おうとすると、登録が終わりません。必須の列だけで使い始め、少しずつ埋めます。</li></ul>
+<h2 id="h-14">無料のテンプレートについて</h2>
+<p>ここで説明した3つの表に、保証の状態・ライセンスの残数・割当の状態の自動計算と、台数や費用を集計するダッシュボードを入れた「IT資産管理台帳」を、社内IT道具箱で無料版として準備しています（配布準備中）。Googleスプレッドシートで使う形ですが、Excelでも使えるように作っています。</p>
+<ul><li><a href="../../it-asset-ledger/">IT資産管理台帳の紹介を見る（配布準備中）</a></li></ul>
+<p>期限のメール通知や棚卸しの記録などを加えた有料版も準備中です。内容は紹介ページでお知らせします。</p>
+<p>生成AIで台帳を自作するか、テンプレートを使うかで迷っている場合は、次の記事で違いと確かめ方を説明しています。</p>
+<ul><li><a href="../it-asset-ledger-ai-or-template/">IT資産管理台帳はAIで自作するか、テンプレートを使うか</a></li></ul>
+<h2 id="h-15">まとめ</h2>
+<ul><li>台帳は「機器」「ライセンス」「割当」の3つの表に分ける</li><li>最初は必須の列だけを埋めて使い始める</li><li>保証期限とライセンスの残数は数式で自動にし、色だけでなく文字でも知らせる</li><li>割当の表は、時期を決めて点検する</li></ul>
+<hr>
+<p>この記事の内容は一般的な参考例であり、法的助言ではありません。導入にあたっては自社の状況に合わせて内容を確認し、必要に応じて専門家にご相談ください。数式による判定は入力されたデータにもとづく参考情報です。保証期限や契約内容は、メーカーや契約先の情報で確かめてください。</p>
+        </div>
+        <p class="article__back"><a href="../">記事の一覧へ戻る</a></p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <a class="footer-logo" href="../../">社内IT道具箱</a>
+        <p class="footer-tagline">中小企業の、はじめてのIT管理をやさしく、シンプルに。</p>
+      </div>
+      <div class="footer-legal">
+        <p>掲載しているテンプレートは一般的な参考例であり、法的助言ではありません。<br>導入にあたっては自社の状況に合わせて内容を確認し、必要に応じて専門家にご相談ください。</p>
+        <p class="footer-links"><a href="../../privacy/">プライバシーポリシー</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

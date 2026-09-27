@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IT資産管理台帳はAIで自作するか、テンプレートを使うか：選び方と、作ったあとの確かめ方｜社内IT道具箱</title>
+  <meta name="description" content="生成AIに頼めば台帳の表は作れます。自作が向いている人・テンプレートが向いている人の違いと、AIで作った台帳の数式を確かめるためのテスト用データと期待値の例を紹介します。">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://solo-joshis.github.io/shanai-it-dougubako/articles/it-asset-ledger-ai-or-template/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <script src="../../assets/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-logo" href="../../">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="10" width="26" height="18" rx="2.5"/><path d="M11 10V6.5A1.5 1.5 0 0 1 12.5 5h7A1.5 1.5 0 0 1 21 6.5V10M3 17h26M14 15h4v4h-4z"/></svg>
+        社内IT道具箱
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開く">
+        <svg class="icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="サイト内">
+        <ul>
+          <li><a href="../../#tools">道具の一覧</a></li>
+          <li><a href="../../articles/">記事</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="article">
+      <div class="container article__inner">
+        <nav class="breadcrumb" aria-label="現在地">
+          <ol>
+            <li><a href="../../">トップ</a></li>
+            <li><a href="../">記事</a></li>
+            <li aria-current="page">IT資産管理台帳はAIで自作するか、テンプレートを使うか：選び方と、作ったあとの確かめ方</li>
+          </ol>
+        </nav>
+        <header class="article__header">
+          <h1 class="article__title">IT資産管理台帳はAIで自作するか、テンプレートを使うか：選び方と、作ったあとの確かめ方</h1>
+          <p class="article__date"><time datetime="2026-09-24">2026/09/24</time></p>
+        </header>
+        <div class="prose">
+<h2 id="h-1">結論：表を作ること自体より、作ったあとに確かめて引き継げるかで選ぶ</h2>
+<p>生成AIに頼めば、IT資産管理台帳の表や数式は作れます。そのため「どちらが作れるか」ではなく、次の3つを誰がやるかで選ぶのが現実的です。</p>
+<ul><li>数式が正しく動いているかを確かめる</li><li>つまずいたときに直す</li><li>担当者が代わるときに、使い方を引き継ぐ</li></ul>
+<p>台帳に何を書くか（機器・ライセンス・割当の3つの表と項目）は、<a href="../it-asset-ledger-how-to/">IT資産管理台帳の作り方</a>で説明しています。この記事では、自作とテンプレートの選び方と、作ったあとの確かめ方を扱います。</p>
+<h2 id="h-2">自作が向いている人・テンプレートが向いている人</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="表（横にスクロールできます）"><table><thead><tr><th scope="col"></th><th scope="col">自作が向いている</th><th scope="col">テンプレートが向いている</th></tr></thead><tbody><tr><td>数式</td><td>読んで直せる</td><td>読むのは苦手、または時間がない</td></tr><tr><td>管理する項目</td><td>自社独自の項目が多い</td><td>一般的な項目で足りる</td></tr><tr><td>作ったあとの手間</td><td>確かめる・直す時間を取れる</td><td>確かめる・直す時間を減らしたい</td></tr><tr><td>引き継ぎ</td><td>使い方の説明も自分で書ける</td><td>説明が最初から付いているほうがよい</td></tr></tbody></table></div>
+<p>数式を読んで直せて、確かめる時間も取れる人は、自作するのがいちばん自社に合った台帳になります。</p>
+<h2 id="h-3">AIで自作する場合の頼み方</h2>
+<h3 id="h-4">最初に守ること：実データをAIに貼らない</h3>
+<p>使用者の名前・部署・シリアル番号などの実データは、AIに貼り付けないでください。AIに渡すのは、<strong>列の見出しと、作り物のデータ（ダミーデータ）だけ</strong>にします。使ってよいAIサービスや入力してよい情報について社内のルールがある場合は、そちらに従ってください。</p>
+<h3 id="h-5">頼み方の例</h3>
+<p>表の構成・判定のルール・使う環境を具体的に書くと、意図と違う数式が返ってくることが減ります。</p>
+<pre><code>Googleスプレッドシートで、IT資産管理台帳を作りたいです。
+次の3つのシートに分けてください。
+
+1. ハードウェア台帳：管理番号、種別、保証期限、保証の状態、使用者、ステータス
+2. ライセンス台帳：ライセンスID、製品名、保有数、割当数、残数
+3. ライセンス割当：ライセンスID、使用者、割当日、解除日
+
+自動計算のルール：
+- 保証の状態：保証期限が今日より前なら「期限切れ」、今日から90日以内なら「期限間近」。
+  保証期限が空欄の行と、ステータスが「廃棄済」の行は空欄。日付でない値は「日付エラー」。
+- 割当数：ライセンス割当のうち、割当日が今日以前で、解除日が空欄または今日より後の行の件数。
+- 残数：保有数 − 割当数。
+
+条件：
+- Excelでも動くように、ARRAYFORMULA と FILTER は使わず、1行ずつ数式を入れてください。
+- 範囲は $A$2:$A$1000 のように終わりの行まで書いてください。
+- 各数式が何をしているかを、日本語で説明してください。</code></pre>
+<p>Excelでも使う可能性がある場合は、上の「条件」のように書いておきます。Excelでは「A2:A」のような終わりの行のない範囲は使えず、FILTER関数は古いバージョンのExcelにはありません。</p>
+<h2 id="h-6">作ったあとに確かめる方法</h2>
+<p>AIが返した数式は、それらしく見えても、境目の値で判定がずれていることがあります。次の手順で確かめます。</p>
+<h3 id="h-7">1. 「今日」を固定した日付に置き換える</h3>
+<p>TODAY() は毎日変わるため、確かめた結果を見比べられません。確かめる間だけ、どこかのセルに「2026/10/01」のような固定の日付を入れ、数式の TODAY() をそのセルの参照に置き換えます。確かめ終わったら元に戻します。</p>
+<h3 id="h-8">2. 境目の値を入れて、期待する結果と比べる</h3>
+<p>基準日を 2026/10/01 とした場合のテスト用データと、期待する結果の例です。</p>
+<p><strong>保証の状態</strong></p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="表（横にスクロールできます）"><table><thead><tr><th scope="col">保証期限</th><th scope="col">ステータス</th><th scope="col">期待する結果</th><th scope="col">確かめたいこと</th></tr></thead><tbody><tr><td>2026/09/30</td><td>使用中</td><td>期限切れ</td><td>前日は期限切れ</td></tr><tr><td>2026/10/01</td><td>使用中</td><td>期限間近</td><td>当日はまだ期限切れではない</td></tr><tr><td>2026/12/30</td><td>使用中</td><td>期限間近</td><td>90日後は含む</td></tr><tr><td>2026/12/31</td><td>使用中</td><td>（空欄）</td><td>91日後は含まない</td></tr><tr><td>2026/04/01</td><td>廃棄済</td><td>（空欄）</td><td>廃棄済は警告しない</td></tr><tr><td>来年3月（文字）</td><td>使用中</td><td>日付エラー</td><td>文字は日付として扱わない</td></tr><tr><td>（空欄）</td><td>使用中</td><td>（空欄）</td><td>未入力は警告しない</td></tr></tbody></table></div>
+<p><strong>ライセンスの割当数</strong>（保有数を3とする）</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="表（横にスクロールできます）"><table><thead><tr><th scope="col">割当日</th><th scope="col">解除日</th><th scope="col">数えるか</th><th scope="col">確かめたいこと</th></tr></thead><tbody><tr><td>2026/09/01</td><td>（空欄）</td><td>数える</td><td>割当中</td></tr><tr><td>2026/10/15</td><td>（空欄）</td><td>数えない</td><td>まだ始まっていない</td></tr><tr><td>2026/04/01</td><td>2026/10/01</td><td>数えない</td><td>当日に解除した</td></tr><tr><td>2026/04/01</td><td>2026/10/02</td><td>数える</td><td>解除は明日</td></tr><tr><td>（空欄）</td><td>（空欄）</td><td>数えない</td><td>割当日がない</td></tr></tbody></table></div>
+<p>この5行がすべて同じライセンスIDなら、期待する結果は <strong>割当数2、残数1</strong> です。</p>
+<h3 id="h-9">3. 見落としやすい点を確かめる</h3>
+<ul><li><strong>「*」や「?」を含む値</strong>：COUNTIF・COUNTIFS は、検索する値に含まれる「*」「?」をワイルドカードとして扱います。たとえば管理番号の重複を COUNTIF で調べていると、「PC-*」という値の行は「PC-」で始まるほかの管理番号まで数えてしまい、重複がないのに重複と判定されることがあります。IDに記号を使わないか、ワイルドカードを打ち消す書き方にします。</li><li><strong>文字として入った日付</strong>：CSVから貼り付けた日付や、先頭に「'」が付いた日付は、見た目が日付でも文字として扱われ、比較の数式が意図どおりに動かないことがあります。上の「日付エラー」の判定があれば気づけます。</li><li><strong>列の追加・並べ替え</strong>：列を挿入したり並べ替えたりしたあと、数式の参照先が正しい列を指しているかを確かめます。</li></ul>
+<h3 id="h-10">4. 使い方と確かめ方を書き残す</h3>
+<p>自作した台帳を引き継ぐときに必要になるのは、表そのものより、次のような説明です。</p>
+<ul><li>各列の意味と入力のルール</li><li>自動計算の列と、その判定のルール</li><li>上のようなテスト用データと期待する結果（あとで数式を直したときに、同じ確かめ方ができるように）</li></ul>
+<p>これを書き残す時間が取れるかどうかも、自作するかを決める材料になります。</p>
+<h2 id="h-11">テンプレートを使う場合も確かめること</h2>
+<p>テンプレートを使う場合も、次の点は使う前に確かめてください。</p>
+<ul><li>自社で使う環境（Googleスプレッドシート／Excel、Excelのバージョン）で動くか</li><li>どんな確かめ方をしてから配布されているか</li><li>自動計算の列と、入力してはいけない列がどこか</li><li>列を追加したいときのルール</li></ul>
+<h2 id="h-12">社内IT道具箱の「IT資産管理台帳」について</h2>
+<p>社内IT道具箱では、保証期限の前日・当日・90日後・91日後、未来の割当、当日の解除といった境目の値を含むサンプルデータと、あらかじめ用意した期待値を照合する自動の検証を行い、そのうえで無料版を配布する準備をしています（配布準備中）。確かめた項目の一覧は、公開時に紹介ページで示す予定です。</p>
+<ul><li><a href="../../it-asset-ledger/">IT資産管理台帳の紹介を見る（配布準備中）</a></li></ul>
+<p>有料版（準備中）では、期限のメール通知や棚卸しの記録に加えて、担当者交代の手順書と、AIで安全に改造するためのガイドを付ける予定です。</p>
+<h2 id="h-13">まとめ</h2>
+<ul><li>台帳の表はAIでも作れる。選ぶ基準は、確かめる・直す・引き継ぐ手間を誰が持つか</li><li>AIには実データを貼らず、見出しとダミーデータだけを渡す</li><li>「今日」を固定し、境目の値と期待する結果を用意して確かめる</li><li>確かめ方も書き残しておくと、引き継ぎや修正のときに使える</li></ul>
+<hr>
+<p>この記事の内容は一般的な参考例であり、法的助言ではありません。導入にあたっては自社の状況に合わせて内容を確認し、必要に応じて専門家にご相談ください。数式による判定は入力されたデータにもとづく参考情報です。保証期限や契約内容は、メーカーや契約先の情報で確かめてください。</p>
+        </div>
+        <p class="article__back"><a href="../">記事の一覧へ戻る</a></p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <a class="footer-logo" href="../../">社内IT道具箱</a>
+        <p class="footer-tagline">中小企業の、はじめてのIT管理をやさしく、シンプルに。</p>
+      </div>
+      <div class="footer-legal">
+        <p>掲載しているテンプレートは一般的な参考例であり、法的助言ではありません。<br>導入にあたっては自社の状況に合わせて内容を確認し、必要に応じて専門家にご相談ください。</p>
+        <p class="footer-links"><a href="../../privacy/">プライバシーポリシー</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
