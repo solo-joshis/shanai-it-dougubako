@@ -323,6 +323,33 @@ html:not(.js) .hero-slide:not(:first-child) { display: none; }
   .shelf-note { align-items: flex-start; margin-top: 14px; padding: 16px; gap: 14px; }
 }
 
+/* ===== トップ：開発中の道具 ===== */
+.lab-card {
+  display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 28px; align-items: start;
+  margin-top: 32px; padding: 32px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-bg);
+}
+.lab-card__logo { display: block; width: 96px; height: 96px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
+.lab-card__status { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.lab-card__title { margin-top: 12px; font-size: 24px; font-weight: 800; }
+.lab-card__kind { margin-left: 12px; color: var(--color-text-secondary); font-size: 15px; font-weight: 500; }
+.lab-card__desc { margin-top: 10px; font-size: 16px; line-height: 1.8; }
+.lab-card__notes { margin-top: 14px; padding-left: 1.3em; color: var(--color-text-secondary); font-size: 14px; line-height: 1.8; }
+.lab-card__notes li + li { margin-top: 2px; }
+.lab-card__actions { margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.lab-card__foot { margin-top: 12px; color: var(--color-text-secondary); font-size: 13px; }
+@media (max-width: 767px) {
+  /* スマホ：ロゴの右にバッジと名前、説明から下は全幅 */
+  .lab-card { grid-template-columns: 56px minmax(0, 1fr); gap: 0 16px; margin-top: 24px; padding: 20px 18px; }
+  .lab-card__body { display: contents; }
+  .lab-card__logo { grid-row: span 2; width: 56px; height: 56px; }
+  .lab-card__title { margin-top: 8px; font-size: 20px; }
+  .lab-card__kind { display: block; margin: 2px 0 0; font-size: 14px; }
+  .lab-card__desc { margin-top: 14px; font-size: 15px; line-height: 1.7; }
+  .lab-card__desc, .lab-card__notes, .lab-card__actions, .lab-card__foot { grid-column: 1 / -1; }
+  .lab-card__actions { display: grid; justify-items: center; gap: 12px; }
+  .lab-card__actions .btn { width: 100%; min-height: 48px; }
+}
+
 /* ===== トップ：比較 ===== */
 .compare { width: 100%; margin-top: 32px; border-collapse: collapse; background: var(--color-bg); font-size: 15px; }
 .compare th, .compare td { padding: 16px 20px; border: 1px solid var(--color-border); text-align: left; vertical-align: middle; line-height: 1.7; }
